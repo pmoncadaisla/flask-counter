@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-  name: httpbin
+  name: flask
 spec:
   rules:
   - host: counter-flask.demo.gcp.moncadaisla.es

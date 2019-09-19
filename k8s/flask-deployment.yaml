@@ -17,8 +17,11 @@ spec:
         run: flask
     spec:
       containers:
-      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.0.0
+      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.1.0
         name: flask
+        env:
+          - name: REDIS_HOST
+            value: redis
         resources:
           requests:
             memory: 128Mi

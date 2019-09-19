@@ -17,7 +17,7 @@ spec:
         run: flask
     spec:
       containers:
-      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.2.0
+      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.3.0
         name: flask
         livenessProbe:
           httpGet:
@@ -30,6 +30,11 @@ spec:
         env:
           - name: REDIS_HOST
             value: redis
+          - name: REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: redis
+                key: password
         resources:
           requests:
             memory: 128Mi

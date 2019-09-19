@@ -33,7 +33,11 @@ def hello():
     
     return message
 
-@app.route('/health')
-def health():
+@app.route('/health/live')
+def health_live():
+    return "Ok"
+
+@app.route('/health/ready')
+def health_ready():
     return "Ok"
 

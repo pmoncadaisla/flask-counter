@@ -33,3 +33,7 @@ def hello():
     
     return message
 
+@app.route('/health')
+def health():
+    return "Ok"
+

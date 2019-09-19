@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: flask
+  name: flask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: flask
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: flask
+    spec:
+      containers:
+      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.0.0
+        name: flask
+        resources:
+          requests:
+            memory: 128Mi
+            cpu: 100m
+          limits:
+            memory: 256Mi
+            cpu: 200m
+        #livenessProbe: {}
+            
+status: {}

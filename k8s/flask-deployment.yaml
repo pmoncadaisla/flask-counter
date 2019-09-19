@@ -17,8 +17,16 @@ spec:
         run: flask
     spec:
       containers:
-      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.1.0
+      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.2.0
         name: flask
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 5000
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 5000
         env:
           - name: REDIS_HOST
             value: redis

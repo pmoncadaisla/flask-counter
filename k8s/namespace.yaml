@@ -1,13 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  creationTimestamp: "2019-09-18T22:24:40Z"
-  name: counter
-  resourceVersion: "32536"
-  selfLink: /api/v1/namespaces/counter
-  uid: 1b483d78-da63-11e9-9553-42010af00045
-spec:
-  finalizers:
-  - kubernetes
-status:
-  phase: Active
+  name: counter-keepcoding

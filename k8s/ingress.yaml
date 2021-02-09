@@ -6,7 +6,7 @@ metadata:
   name: flask
 spec:
   rules:
-  - host: counter-flask.demo.gcp.moncadaisla.es
+  - host: flask-counter.keepcoding.gcp.moncadaisla.es
     http:
       paths:
       - backend:

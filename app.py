@@ -34,9 +34,9 @@ def get_hit_count():
     retries = 5
     while True:
         try:
-            cache.incr('hits')
+            hits = cache.incr('hits')
             c.labels(status="success").inc()
-            return 
+            return hits
         except redis.exceptions.ConnectionError as exc:
             if retries == 0:
                 c.labels(status="failure").inc()

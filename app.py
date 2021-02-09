@@ -3,6 +3,8 @@ import time
 import redis
 from flask import Flask
 
+import json_logging, logging, sys
+
 import os
 
 # Set environment variables
@@ -10,6 +12,14 @@ REDIS_HOST = os.environ['REDIS_HOST']
 REDIS_PASSWORD = os.environ['REDIS_PASSWORD']
 
 app = Flask(__name__)
+
+# intialize logger
+json_logging.init_flask(enable_json=True)
+json_logging.init_request_instrument(app)
+logger = logging.getLogger("flask-counter")
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler(sys.stdout))
+
 cache = redis.Redis(host=REDIS_HOST, port=6379, password=REDIS_PASSWORD)
 
 

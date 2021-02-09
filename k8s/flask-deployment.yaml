@@ -15,9 +15,13 @@ spec:
       creationTimestamp: null
       labels:
         run: flask
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "8000"
     spec:
       containers:
-      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.4.0
+      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.5.0
         name: flask
         livenessProbe:
           httpGet:

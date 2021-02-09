@@ -17,7 +17,7 @@ spec:
         run: flask
     spec:
       containers:
-      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.3.0
+      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.4.0
         name: flask
         livenessProbe:
           httpGet:

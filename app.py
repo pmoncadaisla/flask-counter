@@ -5,6 +5,9 @@ from flask import Flask
 
 import json_logging, logging, sys
 
+from prometheus_client import start_http_server, Counter
+
+
 import os
 
 # Set environment variables
@@ -22,14 +25,21 @@ logger.addHandler(logging.StreamHandler(sys.stdout))
 
 cache = redis.Redis(host=REDIS_HOST, port=6379, password=REDIS_PASSWORD)
 
+start_http_server(8000)
+
+c = Counter("redis_calls", "Number of calls to redis", ["status"])
+
 
 def get_hit_count():
     retries = 5
     while True:
         try:
-            return cache.incr('hits')
+            cache.incr('hits')
+            c.labels(status="success").inc()
+            return 
         except redis.exceptions.ConnectionError as exc:
             if retries == 0:
+                c.labels(status="failure").inc()
                 raise exc
             retries -= 1
             time.sleep(0.5)

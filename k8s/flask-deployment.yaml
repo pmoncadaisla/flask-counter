@@ -21,7 +21,7 @@ spec:
         prometheus.io/port: "8000"
     spec:
       containers:
-      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.5.0
+      - image: eu.gcr.io/pmoncada-001/keepcoding/flask-counter:v1.5.1
         name: flask
         livenessProbe:
           httpGet:
